@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços - Ristretto Café Bar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Style.css' %}">
+</head>
+<body>
+    <header>
+        <img id="Logo" src="{% static 'Imagens/Ristretto_oficial_creme 2.png' %}" alt="Imagem  da cor creme, um amarelo bem clarinho, escrito Ristretto grande e  cafe bar pequeno em baixo do nome Ristretto no canto esquerdo  da imagem tudo escrito em letra cursiva so tem essas palavras na imagem.">  
+    </header>
+    <nav id="menu">
+        <div id="barra"></div>
+        <div class="navbar-nav d-flex">
+            <a class="nav-link" href="{% url 'website:index' %}">INÍCIO</a>
+            <a class="nav-link" href="{% url 'website:orcamento' %}">ORÇAMENTO</a>
+            <a class="nav-link" aria-current="page" href="{% url 'website:servicos' %}">SERVIÇOS</a>
+            <a class="nav-link" href="{% url 'website:sobre' %}">SOBRE</a>
+        </div>
+    </nav>
+    
+    <div id="info1" class="servicosdiv1">
+        <div id="texto-info1" class="servicosdiv1,1">
+            <h2>Café bar</h2>
+            <p>Nosso serviço mais demandado. Nele, servimos cafés especiais  e drinks de café com ou sem álcool com quatro opções de pacotes. Um nível de qualidade de produtos e de serviço encontrado em pouquíssimas cafeterias mundo afora.
+
+            Ideal para recepções, casamentos, festas de aniversário, reuniões. Clique no botão abaixo para ver o nosso portfólio de drinks. </p>
+        </div>
+
+        <div id="img-info1" class="servicosdiv1,2">
+            <img id="img-cafe" class="img-fluid" src="{% static 'Imagens/42444a_3ebe8aeb32e4464489bdaa10bff459bd~mv2.avif' %}" alt="">
+        </div>
+        
+    </div>
+
+    <div id="info2" class="servicosdiv2">
+        <div id="texto-info2" class="servicosdiv2,1">
+            <h2>Drip station</h2>
+            <p>Preparamos três cafés, de diferentes características, moídos na hora, extraídos na Chemex especialmente para os seus convidados.
+
+                Para todos os apaixonados por café. </p>
+        </div>
+
+        <div id="img-info2" class="servicosdiv2,2">
+            <img id="img-drinks" class="img-fluid" src="{% static 'Imagens/42444a_e70f362715b8493080c67042f09dcfa4~mv2.avif' %}" alt="">
+        </div>
+    </div>
+
+    <div id="info3" class="servicosdiv3">
+        <div id="texto-info3" class="servicosdiv3,1">
+            <h2>Feiras e congressos</h2>
+            <p>Existe estande sem café, existe estande com café e existe estande com a Ristretto. Serviço enxuto, de altíssima qualidade e eficiência. </p>
+        </div>
+
+        <div id="img-info3" class="servicosdiv3,2">
+            <img id="img-barista" class="img-fluid" src="{% static 'Imagens/42444a_3befbba37eab406dac8cbc8d14299615~mv2.avif' %}" alt="">
+        </div>
+    </div>
+
+    <div id="info4" class="servicosdiv4">
+        <div id="texto-info4" class="servicosdiv4,1">
+            <h2>Impressão no cappuccino</h2>
+            <p>Imprima a sua logo, seu brasão ou a foto dos seus convidados nos cappuccinos. </p>
+        </div>
+
+        <div id="img-info4" class="servicosdiv4,2">
+            <img id="img-consultoria" class="img-fluid" src="{% static 'Imagens/42444a_079a0ea065a1496ebcc3d72fa3f0e892~mv2.avif' %}" alt="">
+        </div>
+    </div>
+
+    <div id="info5" class="servicosdiv5">
+        <div id="texto-info5" class="servicosdiv5,1">
+            <h2>Serviços personalizados</h2>
+            <p>Precisa de algo personalizado relacionado ao mundo dos cafés? Entre em contato pelo número 61 9.8496.9523 ou pelo e-mail contato@ristrettocafebar.com.br</p>
+        </div>
+
+        <div id="img-info5" class="servicosdiv5,2">
+            <img id="img-consultoria" class="img-fluid" src="{% static 'Imagens/42444a_99529f04982c46dba0e595c2fc6b16de~mv2.avif' %}" alt="">
+        </div>
+    </div>
+
+    <footer>
+        <img src="{% static 'Imagens/Ristretto_cafebar_branca 1.png' %}" alt="">
+        <div id="redes">
+            <a href="https://www.instagram.com/ristrettocafebar/"><img src="{% static 'Imagens/Instagram.png' %}" alt=""></a>
+            <a href="https://www.facebook.com/ristrettocafe1"><img src="{% static 'Imagens/Facebook.png' %}" alt=""></a>
+        </div>
+    </footer>
+    <a id="wtsapp-btn" href="https://wa.me/5555555555555" target="_blank">
+        <img id="WAB" src="{% static 'Imagens/whatsapp1.png' %}" alt="">
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

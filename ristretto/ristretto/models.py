@@ -52,6 +52,7 @@ class Bebidas(models.Model):
         CHOC_QUENTE = 'CHOC_QUENTE', 'Chocolate quente cremoso'
         BEBIDAS_GELADAS = 'BEBIDAS_GELADAS', 'Bebidas geladas'
         OUTRO = 'OUTRO', 'Outro'
+    
     bebidas = models.CharField(
         max_length=20,
         choices=OpcoesBebidas.choices,
@@ -82,13 +83,13 @@ class Canal(models.Model):
         blank=False
     )
     class OpcoesCanal(models.TextChoices):
-        INDICACAO = 'INDCAC', 'Indicação'
-        INSTAGRAM = 'INSTAG', 'Instagram'
+        INDICACAO = 'INDICACAO', 'Indicação'
+        INSTAGRAM = 'INSTAGRAM', 'Instagram'
         GOOGLE = 'GOOGLE', 'Google'
-        CASAMENTOS = 'CASMTS', 'Casamentos.com'
+        CASAMENTOS = 'CASAMENTOS.COM', 'Casamentos.com'
         OUTRO = 'OUTROS', 'Outro'
     descoberta = models.CharField(
-        max_length=6,
+        max_length=15,
         choices=OpcoesCanal.choices,
         null=False,
         blank=False
@@ -116,7 +117,7 @@ class Cliente(models.Model):
     )
 
     phone_regex = RegexValidator(
-        regex=r'^\+?1?\d{9,15}$'
+        regex=r'^\+?1?\d{10,11}$'
     )
     telefone = models.CharField(
         validators=[phone_regex], 
@@ -199,7 +200,7 @@ class Corporativo(models.Model):
         primary_key=True,
         null=False,
         blank=False
-        )
+    )
 
     class OpcoesCorporativo(models.TextChoices):
         REUNIAO = 'REUNIAO', 'Reunião/Treinamento'
@@ -231,13 +232,13 @@ class Corporativo(models.Model):
         DOSES_800  = 800,  '800 doses'
         DOSES_900  = 900,  '900 doses'
         DOSES_1000 = 1000, '1000 doses'
-    
+
     estimativa_doses = models.IntegerField(
         choices=OpcoesDoses.choices,
         null=False,
         blank=False,
         verbose_name="Estimativa de Doses diárias"
-        )
+    )
 
     mais_doses = models.CharField(
         max_length=30,
@@ -263,11 +264,10 @@ class Corporativo(models.Model):
         verbose_name="Evento Corporativo Relacionado"
     )
 
-    FK_Bebidas = models.ForeignKey(
+    FK_Bebidas = models.ManyToManyField(
         'Bebidas',
-        null=False,
-        blank=False,
-        on_delete=models.PROTECT
+        blank=True,
+        verbose_name="Bebidas Selecionadas"
     )
 
 class Social(models.Model):

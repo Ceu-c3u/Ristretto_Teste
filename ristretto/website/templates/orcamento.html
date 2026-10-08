@@ -1,0 +1,368 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORÇAMENTO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Style.css' %}">
+</head>
+<body id="body-orç">
+    <header>
+        <img id="Logo" src="{% static 'Imagens/Ristretto_oficial_creme 2.png' %}" alt="Imagem  da cor creme, um amarelo bem clarinho, escrito Ristretto grande e  cafe bar pequeno em baixo do nome Ristretto no canto esquerdo  da imagem tudo escrito em letra cursiva so tem essas palavras na imagem.">  
+    </header>
+    <nav id="menu">
+        <div id="barra"></div>
+        <div class="navbar-nav d-flex">
+            <a class="nav-link" href="{% url 'website:index' %}">INÍCIO</a>
+            <a class="nav-link" aria-current="page" href="{% url 'website:orcamento' %}">ORÇAMENTO</a>
+            <a class="nav-link" href="{% url 'website:servicos' %}">SERVIÇOS</a>
+            <a class="nav-link" href="{% url 'website:sobre' %}">SOBRE</a>
+        </div>
+    </nav>
+<div id="div-moore" class="row">
+    <div id="fundo-orç" class="col-md-9 col-12">
+        <h1>ORÇAMENTO</h1>
+            <div id="p-orç">
+                <p>Queremos deixar seu evento ainda mais especial com nossos cafés e drinks de café! Preencha o formulário abaixo para que possamos preparar uma proposta inicial personalizada.</p>
+            </div>
+            <img class="separador-orç" src="{% static 'Imagens/separador-orç.png' %}" alt="">
+
+        <div id="orçamento" class="col-12 col-md-9">
+            <form id="form-orcamento" action="">
+                {% csrf_token %}
+                <ul class="nav nav-tabs nav-justified" id="btn-sc" role="tablist">
+                    <li class="nav-item " role="presentation">
+                        <button class="nav-link active" id="social-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Social</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="corporativo-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Corporativo</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+<!--Social-->
+                    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="social-tab" tabindex="0">
+                        <div id="social-form">
+                            <h5>Qual o tipo do seu evento?</h5>
+                            <div class="pergunta">
+                                <div id="social-p-1">
+                                    <div class="flex-column">
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="social-evento" id="social-ev-casamento" value="CASAMENTO" aria-label="Casamento">
+                                        <label for="social-ev-casamento">Casamento</label>
+                                        </div>
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="social-evento" id="social-ev-aniversario" value="ANIVERSARIO" aria-label="Aniversário">
+                                            <label for="social-ev-aniversario">Aniversário</label>
+                                        </div>
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="social-evento" id="social-ev-formatura" value="FORMATURA" aria-label="Formatura">
+                                            <label for="social-ev-formatura">Formatura</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex-column input-group flex-nowrap">
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="social-evento" id="social-ev-confrat" value="CONFRATERNIZACAO" aria-label="Confraternização particular">
+                                            <label for="social-ev-confrat">Confraternização particular</label>
+                                        </div>
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="social-evento" id="radio-outro" value="OUTRO" aria-label="Outro">
+                                            <label for="radio-outro">Outro</label>
+                                        </div>
+                                        <div class="input-group input-group-sm mb-3">
+                                        <input type="text" class="form-control" id="input-outro" placeholder="Outro" aria-label="outro" disabled>
+                                        </div>
+                                    </div>    
+                                </div>
+                            </div>
+                        <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                            <h5>Deseja servir bebidas alcoólicas?</h5>
+                            <div id="social-p-2">
+                                <div class="check-line">
+                                    <input class="form-check-input" type="radio" name="social-alcool" id="social-alc-sim" value="SIM" aria-label="Sim">
+                                    <label for="social-alc-sim">Sim</label>
+                                </div>
+                                <div class="check-line">
+                                    <input class="form-check-input" type="radio" name="social-alcool" id="social-alc-nao" value="NAO" aria-label="Não">
+                                    <label for="social-alc-nao">Não</label>
+                                </div>
+                                <div class="check-line">
+                                    <input class="form-check-input" type="radio" name="social-alcool" id="social-alc-talvez" value="TALVEZ" aria-label="Talvez">
+                                    <label for="social-alc-talvez">Talvez</label>
+                                </div>
+                            </div>
+                        <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                            <h5>Gostaria de adicionar algum destes serviços ao evento?</h5>
+                            <div id="social-p-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="social-drip">
+                                    <label class="form-check-label" for="social-drip">
+                                        <h6>Balcão de Drip Station</h6>
+                                        <p>(três diferentes grãos de cafés especiais filtrados sob demanda. Ideal para experiências personalizadas)</p>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="social-impressora">
+                                    <label class="form-check-label" for="social-impressora">
+                                        <h6>Impressora para cappuccino</h6>
+                                        <p>(personaliza os cappuccinos com foto, logo, brasão ou arte escolhida)</p>
+                                    </label>
+                                </div>
+                            </div>
+                        <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        </div>
+                    </div>
+<!--Corporativo-->
+                    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="corporativo-tab" tabindex="0">
+                        <div id="corporativo-form">
+                            <h5>Qual o tipo do seu evento?</h5>
+                            <div class="pergunta">
+                                <div id="corporativo-p-1">
+                                    <div class="flex-column">
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="corp-evento" id="corp-ev-reuniao" value="REUNIAO" aria-label="Reunião/treinamento">
+                                            <label for="corp-ev-reuniao">Reunião/treinamento</label>
+                                        </div>
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="corp-evento" id="corp-ev-feira" value="FEIRA" aria-label="Feira/congresso">
+                                            <label for="corp-ev-feira">Feira/congresso</label>
+                                        </div>
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="corp-evento" id="corp-ev-lancamento" value="LANCAMENTO" aria-label="Lançamento de produto">
+                                            <label for="corp-ev-lancamento">Lançamento de produto</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex-column input-group flex-nowrap">
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="corp-evento" id="corp-ev-fimano" value="FIM_ANO" aria-label="Evento de fim de ano">
+                                            <label for="corp-ev-fimano">Evento de fim de ano</label>
+                                        </div>
+                                        <div class="check-line">
+                                            <input class="form-check-input" type="radio" name="corp-evento" id="corp-radio-outro" value="OUTRO" aria-label="Outro">
+                                            <label for="corp-radio-outro">Outro</label>
+                                        </div>
+                                        <div class="input-group input-group-sm mb-3">
+                                            <input type="text" class="form-control" id="corp-input-outro" placeholder="Outro" aria-label="outro" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Quantas doses estima servir por dia?</h5>
+                            <div id="corporativo-p-2">
+                                <select class="form-select" id="corp-doses" aria-label="Doses">
+                                    <option value="">Selecione</option>
+                                    <option value="200">200 Doses</option>
+                                    <option value="300">300 Doses</option>
+                                    <option value="400">400 Doses</option>
+                                    <option value="500">500 Doses</option>
+                                    <option value="600">600 Doses</option>
+                                    <option value="700">700 Doses</option>
+                                    <option value="800">800 Doses</option>
+                                    <option value="900">900 Doses</option>
+                                    <option value="1000">1000 Doses</option>
+                                </select>
+                                <p id="txt-menor">Mais de 1000 Doses</p>
+                                <div class="input-group input-group mb-3">
+                                    <input type="text" class="form-control" id="corp-doses-mais" placeholder="Digite" aria-label="outro">
+                                </div>
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Seleção de bebidas</h5>
+                            <div id="corporativo-p-3">
+                                <input type="checkbox" class="btn-check" name="bebidas" id="btn-check-1" value="EXPRESSO" autocomplete="off">
+                                <label class="btn" for="btn-check-1">Expresso</label>
+    
+                                <input type="checkbox" class="btn-check" name="bebidas" id="btn-check-2" value="CAPPUCCINO" autocomplete="off">
+                                <label class="btn" for="btn-check-2">Cappuccino</label>
+    
+                                <input type="checkbox" class="btn-check" name="bebidas" id="btn-check-3" value="CHOC_QUENTE" autocomplete="off">
+                                <label class="btn" for="btn-check-3">Chocolate quente cremoso</label>
+    
+                                <input type="checkbox" class="btn-check" name="bebidas" id="btn-check-4" value="BEBIDAS_GELADAS" autocomplete="off">
+                                <label class="btn" for="btn-check-4">Bebidas geladas</label>
+    
+                                <input type="checkbox" class="btn-check" name="bebidas" id="btn-check-5" value="OUTRO" autocomplete="off">
+                                <label class="btn" for="btn-check-5">Outro</label>
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Gostaria de adicionar algum destes serviços ao evento?</h5>
+                            <div id="corporativo-p-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="corp-drip">
+                                    <label class="form-check-label" for="corp-drip">
+                                        <h6>Balcão de Drip Station</h6>
+                                        <p>(três diferentes grãos de cafés especiais filtrados sob demanda. Ideal para experiências personalizadas)</p>
+                                    </label>
+                                </div>
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Deseja copos ou embalagens personalizados da sua marca?</h5>
+                            <div id="corporativo-p-5">
+                                <div class="check-line">
+                                    <input class="form-check-input" type="radio" name="corp-copos" id="corp-copos-sim" value="SIM" aria-label="Sim">
+                                    <label for="corp-copos-sim">Sim</label>
+                                </div>
+                                <div class="check-line">
+                                    <input class="form-check-input" type="radio" name="corp-copos" id="corp-copos-nao" value="NAO" aria-label="Não">
+                                    <label for="corp-copos-nao">Não</label>
+                                </div>
+                            </div>
+                        <h5>Mais detalhes?</h5>
+                            <div class="input-group input-group mb-3">
+                                <input id="corp-mais-detalhes" type="text" class="form-control" placeholder="Descreva" aria-label="descreva">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<!--Formulario Comun-->
+                <div id="seg-form">
+                        <h5>Qual vai ser a duração do evento?</h5>
+                            <ul class="nav nav-pills mb-3" id="dias" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <input class="form-check-input active" id="pills-um-tab" name="dia" data-bs-toggle="pill" data-bs-target="#pills-home" type="radio" role="tab" aria-controls="pills-home" checked aria-selected="true">Um dia</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <input class="form-check-input" id="pills-mais-tab" name="dia" data-bs-toggle="pill" data-bs-target="#pills-profile" type="radio" role="tab" aria-controls="pills-profile" aria-selected="false">Mais de um dia</button>
+                                </li>
+                            </ul>
+                            <div id="form-dias">
+                                <div id="pills-home">
+                                    <div class="row" id="um-dia">
+                                        <label for="umDia-data">Data:</label>
+                                        <input class="data-style" id="umDia-data" type="date" name="umDia-data">
+                                    </div>
+                                    <div class="hora">
+                                        <div class="row diaHora" style="width: stretch;">
+                                            <label for="umDia-horaInicio">Inicio:</label>
+                                            <input class="data-style" id="umDia-horaInicio" type="time" name="umDia-horaInicio" />
+                                        </div>
+                                        <div class="row diaHora" style="width: stretch;">
+                                            <label for="umDia-horaTermino">Término:</label>
+                                            <input class="data-style" id="umDia-horaTermino" type="time" name="umDia-horaTermino"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <div id="pills-profile" style="display: none;">
+                                    <div class="dia">
+                                        <div class="row diaHora">
+                                            <label for="maisDias-dataInicio">Inicio:</label>
+                                            <input class="data-style" id="maisDias-dataInicio" type="date" name="maisDias-dataInicio">
+                                        </div>
+                                        <div class="row diaHora">
+                                            <label for="maisDias-dataTermino">Término:</label>
+                                            <input class="data-style" id="maisDias-dataTermino" type="date" name="maisDias-dataTermino">
+                                        </div>
+                                    </div>
+                                    <div class="hora">
+                                        <div class="row" id="hrInicio">
+                                            <label for="maisDias-horaInicio">Inicio:</label>
+                                            <input class="data-style" id="maisDias-horaInicio" type="time" name="maisDias-horaInicio"/>
+                                        </div>
+                                        <div class="row" id="hrTermino">
+                                            <label for="maisDias-horaTermino">Término:</label>
+                                            <input class="data-style" id="maisDias-horaTermino" type="time" name="maisDias-horaTermino"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Qual o local do evento?</h5>
+                            <div class="input-group input-group mb-3">
+                                <input id="endereco" type="text" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-ristretto" data-bs-placement="bottom" data-bs-title="Informe o estado, cidade, bairro, rua e numero do local." class="form-control" placeholder="Endereço" aria-label="descreva">
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Qual o numero estimado de convidados?</h5>
+                            <div class="input-group input-group mb-3">
+                                <input id="num-convidados" type="number" min="1" class="form-control" placeholder="Numero de convidados" aria-label="descreva">
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                        <h5>Alguma observação?</h5>
+                            <div class="input-group input-group mb-3">
+                                <input id="observacao" type="text" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-ristretto" data-bs-placement="bottom" data-bs-title="Algo que devemos saber? Alegias, dietas restritas, preferenias notáveis." class="form-control" placeholder="Observações" aria-label="descreva">
+                            </div>
+                    <img class="separador-orç" src="{% static 'Imagens/separador-form.png' %}" alt="">
+                                    <br>
+                </div>
+<!--Como conheceu a Ristretto-->
+                <div id="conheceu">
+                    <h5>Como conheceu a Ristretto?</h5>
+                    <select id="como-conheceu" class="form-select" aria-label="Como conheceu">
+                        <option value="">Selecione</option>
+                        <option value="INDICACAO">Indicação</option>
+                        <option value="INSTAGRAM">Instagram</option>
+                        <option value="GOOGLE">Google</option>
+                        <option value="CASAMENTOS.COM">Casamentos.com</option>
+                        <option value="OUTROS">Outro</option>
+                    </select>
+                </div>
+<!--Dados pessoais-->
+                <div id="form-dados">
+                    <div class="mb-3">
+                        <label for="nome" class="form-label">Nome Completo:</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Nome completo">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Nome@email.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefone" class="form-label">Telefone:</label>
+                        <input type="tel" class="form-control" id="telefone" placeholder="(XX) XXXXX-XXXX">
+                    </div>
+                    <div class="mb-3">
+                        <label for="msg" class="form-label">Mensagem:</label>
+                        <textarea class="form-control" id="msg" data-bs-toggle="tooltip" data-bs-custom-class="tooltip-ristretto" data-bs-placement="bottom" data-bs-title="Escreva aqui qualquer dúvida ou detalhe extra sobre o seu evento." rows="3"></textarea>
+                    </div>
+                    <div id="btn-final">
+                        <button id="enviar" type="button" class="btn">Enviar</button>
+                        <button id="cancelar" type="button" class="btn">Cancelar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+<!--Mensagem final-->
+        <div class="modal fade" id="modal-msg" aria-hidden="true" aria-labelledby="modal-msgLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <button id="btn-modal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <img src="{% static 'Imagens/Ristretto_oficial_creme 2.png' %}" alt="">
+                    <div id="texto-fim">
+                        <p>Recebemos suas informações!</p>
+                        <p>Em breve nossa equipe estará em contato com a proposta inicial personalizada.</p>
+                    </div>
+                    <div id="Merchan">
+                        <p>Aproveite para nos acompanhar no Instagram</p>
+                        <div id="modal-link">
+                            <a href="https://www.instagram.com/ristrettocafebar/" target="_blank"><img src="{% static 'Imagens/Icon-Instagram.png' %}" alt=""></a>
+                            <a id="link-insta" target="_blank" href="https://www.instagram.com/ristrettocafebar/">@ristrettocafebar</a>
+                        </div>
+                        <p>e conheça um pouco mais sobre o nosso trabalho</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+<button class="btn btn-primary" data-bs-target="#modal-msg" data-bs-toggle="modal" style="display: none;">Open first modal</button>
+    <div id="separador-bottom-orç">
+        <img id="separador-bottom" src="{% static 'Imagens/reticula-bottom.png' %}" alt="">
+    </div>
+</div>
+</div>
+    <footer>
+        <img src="{% static 'Imagens/Ristretto_cafebar_branca 1.png' %}" alt="">
+        <div id="redes">
+            <a href="https://www.instagram.com/ristrettocafebar/"><img src="{% static 'Imagens/Instagram.png' %}" alt=""></a>
+            <a href="https://www.facebook.com/ristrettocafe1"><img src="{% static 'Imagens/Facebook.png' %}" alt=""></a>
+        </div>
+    </footer>
+    <a id="wtsapp-btn" href="https://wa.me/5555555555555" target="_blank">
+        <img id="WAB" src="{% static 'Imagens/whatsapp1.png' %}" alt="">
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>const URL_ENVIAR = "{% url 'website:salvar_orcamento' %}";</script>
+    <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>

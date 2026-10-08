@@ -1,0 +1,7 @@
+{
+    "editor.suggest.showStatusBar": true,
+    "workbench.activityBar.autoHide": false,
+    "workbench.activityBar.compact": true,
+    "git.blame.statusBarItem.enabled": true,
+    "debug.showInStatusBar": "always"
+}

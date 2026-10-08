@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RISTRETTO CAFÉ BAR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'Style.css' %}">
+</head>
+<body>
+    <header>
+        <img id="Logo" src="{% static 'Imagens/Ristretto_oficial_creme 2.png' %}" alt="Imagem  da cor creme, um amarelo bem clarinho, escrito Ristretto grande e  cafe bar pequeno em baixo do nome Ristretto no canto esquerdo  da imagem tudo escrito em letra cursiva so tem essas palavras na imagem.">        
+    </header>
+
+    <nav id="menu">
+        <div class="navbar-nav d-flex">
+            <a class="nav-link" aria-current="page" href="{% url 'website:index' %}">INÍCIO</a>
+            <a class="nav-link" href="{% url 'website:orcamento' %}">ORÇAMENTO</a>
+            <a class="nav-link" href="{% url 'website:servicos' %}">SERVIÇOS</a>
+            <a class="nav-link" href="{% url 'website:sobre' %}">SOBRE</a>
+        </div>
+    </nav>
+    <div id="banner-botao">
+        <img id="img-banner" src="{% static 'Imagens/Banner-desktop.png' %}" class="img-fluid" alt="..."/>
+        <img id="img-mobile" src="{% static 'Imagens/Banner-mobile.png' %}" class="img-fluid" alt="..."/>
+        <a href="{% url 'website:orcamento' %}" id="btn-orçamento" tabindex="-1" role="button" aria="true">
+            <img id="textura-botao" src="{% static 'Imagens/textura-botão.png' %}" alt="">
+        </a>
+    </div>
+
+    <div id="banner-borda">
+        <img id="img-ret-home" src="{% static 'Imagens/reticula-home.png' %}" alt="...">
+    </div>
+
+    <div id="xicara-texto" class="row row-cols-1 row-cols-md-2">
+        <div id="texto-cafe" class="col-md-8 col-12">            
+            <div id="cafes-especiais">
+                <h2>Cafés Especiais</h2>
+                <p>Onde você quiser, quando você quiser.</p> 
+                <p>Servimos cafés e drinks de</p> 
+                <p>cafés especiais em seu evento, </p>
+                <p>social ou corporativo.</p>
+            </div>
+        </div>
+        <div id="xicara" class="col-md-4 col-12">
+            <img id="img-xicara" src="{% static 'Imagens/Xicara-reticula.png' %}" alt="">
+        </div>
+    </div>
+
+    <article>
+        <h2>Como surgiu a Ristretto?</h2>
+        <p>A Ristretto nasceu da paixão pelo café e pela intenção de compartilharmos uma bebida de qualidade nos momentos mais marcantes e felizes da vida das pessoas. Como diz o jargão: "a vida é muito curta para tomar cafés ruins". Por que o nosso foco em casamentos? Porque acreditamos nessa união. Luiz Fernando se casou em novembro de 2015. No hall de entrada, lá estávamos recepcionando cada um dos convidados. Daniel se casou em setembro de 2016 e não poderíamos ficar de fora!</p>
+    </article>
+
+    <div id="valores" class="row">
+        <div id="img-valores" class="col">
+            <img  src="{% static 'Imagens/chemex.png' %}" alt="">
+            <img  src="{% static 'Imagens/coqueteleira.png' %}" alt="">
+            <img  src="{% static 'Imagens/chaleira.png' %}" alt="">
+        </div>
+        <div id="texto-valores" class="row row-cols-1 row-cols-md-3">
+            <div class="container col-12 col-md-4">
+                <h3>EXCLUSIVIDADE</h3>
+                <p>Não adianta procurar um substituto. 
+                A responsabilidade, os sorrisos, essa alegria de comemorar com vocês 
+                fazem parte dos nossos valores e não podem ser copiados.</p>
+            </div>
+            <div class="container col-12 col-md-4">
+                <h3>QUALIDADE</h3>
+                <p>Cafés e drinks de qualidade única, de sabor distinto, 
+                personalidade diferente, e muito, muito melhor que as bebidas de café 
+                comumente servidas. Utilizamos grãos que satisfazem os mais altos 
+                padrões de café verde, de torrefação, armazenamento e extração.
+                </p>
+            </div>
+            <div class="container col-12 col-md-4">
+                <h3>DIFERENCIAÇÃO</h3>
+                <p>Somos apaixonados pelo que fazemos e levamos isso aonde você estiver. 
+                Nosso serviço ajudará o seu casamento a ser lembrado com muito carinho 
+                por muito tempo.</p>
+            </div>
+        </div>
+    </div>
+
+        <div id="fundo-preto" class="row row-cols-1 row-cols-md-2">
+
+        <div id="carrossel-foto" class="carousel slide col-12 col-md-8">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{% static 'Imagens/Servindo.png' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Imagens/Cappuccino.png' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Imagens/Drink.png' %}" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'Imagens/Tres-cafes.png' %}" class="d-block w-100" alt="...">
+                </div>
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carrossel-foto" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carrossel-foto" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próxima</span>
+                </button>
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carrossel-foto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carrossel-foto" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carrossel-foto" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carrossel-foto" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+        </div>
+
+            <div id="texto-inicio" class="col-12 col-md-4">
+                <div>
+                    <h4>O início</h4>
+                    <p id="p-inicio">A Ristretto nasceu da paixão pelo café e pela intenção de compartilharmos uma bebida de qualidade 
+                    nos momentos mais marcantes e felizes da vida das pessoas.
+                    </p>
+                    
+                </div>
+                    <a href="{% url 'website:sobre' %}" id="btn-leia" class="btn btn-secondary" tabindex="-1" role="button" aria="true">Leia mais</a>
+
+            </div>
+        </div>
+
+<div id="fundo-ct">
+        
+        <div id="carrossel-texto" class="carousel slide col-12 col-md-7">
+            <h3>Comentários</h3>
+            <div id="txt-crs" class="carousel-inner">
+                <div id="car-itm-a" class="c-i-t carousel-item active">
+                    <p class="texto-crs">
+                        "Ristretto fez o meu casamento e foram excelentes! Diversos convidados nos procuraram depois elogiando tanto a qualidade do café 
+                        - que estava maravilhoso - como também a simpatia dos baristas! 
+                        Um belo diferencial que contribuiu para que minha festa fosse lembrada com carinho pelos convidados! Super recomendo! :) 
+                        (gostamos tanto que meu cunhado já decidiu contratá-los para a festa de casamento dele tb!)".
+                    </p>
+                    <p class="texto-crs-n">Natália B, em casamentos.com.br</p>
+                </div>
+                <div id="car-itm" class="c-i-t carousel-item">
+                    <p class="texto-crs">
+                        "Nossos convidados acharam o máximo a novidade de termos uma cafeteria durante a festa, 
+                        com cafés espressos, cappuccinos. Os baristas foram super agradáveis com todo mundo 
+                        e os cafés estavam delícia!"
+                    </p>
+                    <p class="texto-crs-n">Virgínia C, em casamentos.com.br</p>
+                </div>
+                <div id="car" class="c-i-t carousel-item">
+                    <p class="texto-crs">
+                        De longe, o melhor prestador de serviços do meu casamento. 
+                        De todos os fornecedores, a Ristretto foi a única que, além de não dar qualquer tipo de trabalho/dor de cabeça, 
+                        foi totalmente elogiada por todos os convidados, seja a mais nova, de 6 anos, seja o mais velho, de 92 anos. 
+                        Todos adoraram as bebidas e o atendimento/simpatia de toda a equipe. 
+                        Só tenho elogios para fazer desta empresa, a qual, desde o meu chá-bar, 
+                        sempre me deixou despreocupado e ansioso pelo atendimento 
+                        (ansioso num bom sentido, haja vista que o que eu queria mesmo era provar as bebidas).
+                        Mais do que recomendo a Ristretto.
+                    </p>
+                    <p class="texto-crs-n">Alessandro, em casamentos.com.br</p>
+                </div>
+            </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carrossel-texto" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon btn-comentario" aria-hidden="true"></span>
+                    <span class="visually-hidden">Anterior</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carrossel-texto" data-bs-slide="next">
+                    <span class="carousel-control-next-icon btn-comentario" aria-hidden="true"></span>
+                    <span class="visually-hidden">Próxima</span>
+                </button>
+            <div id="carousel-indicators-texto" class="carousel-indicators">
+                <button  type="button" data-bs-target="#carrossel-texto" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button  type="button" data-bs-target="#carrossel-texto" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button  type="button" data-bs-target="#carrossel-texto" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+        </div> 
+        <img id="separador-bottom" src="{% static 'Imagens/reticula-bottom.png' %}" alt="">
+    </div>
+
+    <footer>
+        <img src="{% static 'Imagens/Ristretto_cafebar_branca 1.png' %}" alt="">
+        <div id="redes">
+            <a href="https://www.instagram.com/ristrettocafebar/"><img src="{% static 'Imagens/Instagram.png' %}" alt=""></a>
+            <a href="https://www.facebook.com/ristrettocafe1"><img src="{% static 'Imagens/Facebook.png' %}" alt=""></a>
+        </div>
+    </footer>
+    <a id="wtsapp-btn" href="https://wa.me/5555555555555" target="_blank">
+        <img id="WAB" src="{% static 'Imagens/whatsapp1.png' %}" alt="">
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
