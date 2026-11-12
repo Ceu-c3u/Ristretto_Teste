@@ -4,7 +4,8 @@ import json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.db import transaction
-
+from django.db.models import Q
+from .emails import enviar_emails_orcamento
 
 # Create your views here.
 
@@ -20,6 +21,17 @@ def servicos(request):
 def sobre(request):
     return render(request, 'sobre.html')
 
+def buscar_duplicatas(evento):
+    cliente = evento.FK_Cliente
+    return (
+        Evento.objects
+        .filter(
+            Q(FK_Cliente=cliente) | Q(FK_Cliente__telefone=cliente.telefone),
+            FK_Duracao__data_inicio=evento.FK_Duracao.data_inicio,
+        )
+        .exclude(pk=evento.pk)
+        .select_related('FK_Duracao', 'FK_Cliente')
+    )
 
 def salvar_orcamento(request):
     if request.method == 'POST':
@@ -28,7 +40,7 @@ def salvar_orcamento(request):
             
             with transaction.atomic():
                 # Salva ou procura um cliente
-                cliente, _ = Cliente.objects.get_or_create(
+                cliente, _ = Cliente.objects.update_or_create(
                     Email=data.get('email'),
                     defaults={
                         'nome': data.get('nome'),
@@ -75,10 +87,13 @@ def salvar_orcamento(request):
                     FK_Cliente=cliente
                 )
 
+                social = None
+                corporativo = None
+
                 # Salva campos do Social
                 if tipo_categoria == 'SOCIAL':
                     social_data = data.get('social', {})
-                    Social.objects.create(
+                    social = Social.objects.create(
                         tipo_evento=social_data.get('tipo_evento', 'OUTRO'),
                         outro_evento=social_data.get('outro_evento'),
                         bebida_alcoolica=social_data.get('bebida_alcoolica', 'NAO'),
@@ -97,11 +112,19 @@ def salvar_orcamento(request):
                         FK_Evento=evento,
                     )
                     # Faz a lista de bebidas e adiciona a corporativo
-                    lista_bebidas_codigos = corp_data.get('bebidas', [])
-                    for codigo in lista_bebidas_codigos:
+                    for codigo in corp_data.get('bebidas', []):
                         bebida_obj, _ = Bebidas.objects.get_or_create(bebidas=codigo)
                         corporativo.FK_Bebidas.add(bebida_obj)
             # manda o json se tudo tiver ok, se nao tiver não manda
+
+            evento = (
+                Evento.objects
+                .select_related('FK_Cliente', 'FK_Duracao', 'FK_Servico','FK_Canal', 'FK_Categoria')
+                .get(pk=evento.pk)
+            )
+            duplicatas = list(buscar_duplicatas(evento))
+            enviar_emails_orcamento(evento, social, corporativo, duplicatas)
+
             return JsonResponse({'ok': True})
         except Exception as e:
             return JsonResponse({'ok': False, 'erro': str(e)}, status=400)

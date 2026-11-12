@@ -1,0 +1,76 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+    <h2 style="color: #3b2a20;">Novo pedido de orçamento</h2>
+
+    {% if duplicatas %}
+    <table width="100%" cellpadding="12" style="background: #fff4e5; border: 1px solid #f0ad4e; border-radius: 6px; margin-bottom: 20px;">
+        <tr><td>
+            <strong>⚠️ Possível orçamento duplicado</strong>
+            <p style="margin: 5px 0;">
+            Este cliente (mesmo e-mail ou telefone) já enviou
+            {{ duplicatas|length }} orçamento(s) para a mesma data:
+            </p>
+            <ul style="margin: 0; padding-left: 20px;">
+            {% for d in duplicatas %}
+                <li>
+                Pedido nº {{ d.ID_Evento }}, {{ d.FK_Duracao.data_inicio|date:"d/m/Y" }},
+                {{ d.endereco }} ({{ d.FK_Cliente.Email }})
+                </li>
+            {% endfor %}
+            </ul>
+        </td></tr>
+    </table>
+    {% endif %}
+
+    <h3 style="border-bottom: 2px solid #ddd; padding-bottom: 4px;">Cliente</h3>
+    <table cellpadding="4">
+        <tr><td><strong>Nome</strong></td><td>{{ cliente.nome }}</td></tr>
+        <tr><td><strong>E-mail</strong></td><td>{{ cliente.Email }}</td></tr>
+        <tr><td><strong>Telefone</strong></td><td>{{ cliente.telefone }}</td></tr>
+        <tr style="font-style: italic; font-size: 0.9rem;"><td>Conheceu a Ristretto com:</td><td>{{ canal.get_descoberta_display }}</td></tr>
+    </table>
+
+    <h3 style="border-bottom: 2px solid #ddd; padding-bottom: 4px;">Evento</h3>
+    <table cellpadding="4">
+        <tr><td><strong>Categoria</strong></td><td>{{ evento.FK_Categoria.get_categoria_display }}</td></tr>
+        <tr><td><strong>Data</strong></td>
+        <td>{{ duracao.data_inicio|date:"d/m/Y" }}{% if duracao.duracao == 'DIAS' %} a {{ duracao.data_termino|date:"d/m/Y" }}{% endif %}</td></tr>
+        <tr><td><strong>Horário</strong></td><td>{{ duracao.hora_inicio|time:"H:i" }} às {{ duracao.hora_termino|time:"H:i" }}</td></tr>
+        <tr><td><strong>Endereço</strong></td><td>{{ evento.endereco }}</td></tr>
+        <tr><td><strong>Numero de Convidados</strong></td><td>{{ evento.num_convidados }}</td></tr>
+    </table>
+
+    {% if social %}
+    <h3 style="border-bottom: 2px solid #ddd; padding-bottom: 4px;">Social</h3>
+    <table cellpadding="4">
+        <tr><td><strong>Tipo do evento</strong></td><td>{{ social.get_tipo_evento_display }}</td></tr>
+        <tr><td><strong>Outro tipo?</strong></td><td>{{ social.outro_evento }}</td></tr>
+        <tr><td><strong>Bebida Alcoolica</strong></td><td>{{ social.get_bebida_alcoolica_display }}</td></tr>
+    </table>
+    {% endif %}
+
+    {% if corporativo %}
+        <h3 style="border-bottom: 2px solid #ddd; padding-bottom: 4px;">Corporativo</h3>
+    <table cellpadding="4">
+        <tr><td><strong>Tipo do evento</strong></td><td>{{ corporativo.get_tipo_evento_display }}</td></tr>
+        <tr><td><strong>Outro tipo?</strong></td><td>{{ corporativo.outro_evento }}</td></tr>
+        <tr><td><strong>Estimativa de doses</strong></td><td>{{ corporativo.get_estimativa_doses_display }}</td></tr>
+        <tr><td><strong>Copos personalizados</strong></td><td>{{ corporativo.copos_personalizados|yesno:"Sim,Não" }}</td></tr>
+        <tr><td><strong>Detalhes</strong></td><td>{{ corporativo.detalhes }}</td></tr>
+        <tr><td><strong>Bebidas</strong></td><td>{% for b in bebidas %}{{ b.get_bebidas_display }}{% if not forloop.last %}, {% endif %}{% endfor %}</td></tr>
+    </table>
+    {% endif %}
+
+    <h3 style="border-bottom: 2px solid #ddd; padding-bottom: 4px;">Serviços adicionais</h3>
+    <table cellpadding="4">
+        <tr><td><strong>Drip Station</strong></td><td>{{ servico.drip_station|yesno:"Sim,Não" }}</td></tr>
+        <tr><td><strong>Impressora</strong></td><td>{{ servico.impressora|yesno:"Sim,Não" }}</td></tr>
+    </table>
+
+    {% if evento.mensagem or evento.observacao %}
+    <h3 style="border-bottom: 2px solid #ddd; padding-bottom: 4px;">Mensagem e observação</h3>
+    <table cellpadding="4">
+        <tr><td><strong>Observação</strong></td><td>{{ evento.observacao }}</td></tr>
+        <tr><td><strong>Mensagem</strong></td><td>{{ evento.mensagem }}</td></tr>
+    </table>
+    {% endif %}
+</div>

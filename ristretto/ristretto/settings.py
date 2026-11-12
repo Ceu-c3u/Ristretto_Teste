@@ -16,6 +16,9 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#API do resend
+from dotenv import load_dotenv
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
@@ -128,8 +131,12 @@ STATICFILES_DIRS =[
 # Email
 # https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
 
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+RESEND_API_KEY = os.environ.get('RESEND_API_KEY')
+
+EMAIL_DESTINO = [
+    e.strip()
+    for e in os.environ.get('EMAIL_DESTINO', '').split(',')
+    if e.strip()
+]
+
+EMAIL_REMETENTE = 'Ristretto <onboarding@resend.dev>'
